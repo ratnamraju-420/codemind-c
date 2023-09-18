@@ -1,54 +1,54 @@
 #include<stdio.h>
-int p(int n)
+int pal(int num)
 {
-	int s,t,l;
-	t=n;
-	s=0;
-	while(t>0)
-	{
-	    l=t%10;
-	    s=s*10+l;
-	    t=t/10;
-	}
-	if(n==s)
-	{
-	    return 1;
-	}
-	else
-	{
-	    return 0;
-	}
+    int rev=0,temp=num,r;
+    while (temp>0)
+    {
+        r=temp%10;
+        rev=(rev*10)+r;
+        temp=temp/10;
+    }
+    if (rev==num)
+    {
+        return 1;
+    }
+    return 0;
 }
 int main()
 {
-    int n,i,p1,p2;
-    scanf("%d",&n);
-    for(i=n-1;;i--)
+    int a;
+    scanf("%d",&a);
+    int diff1=0,diff2=0,i,j;
+    int pal1,pal2;
+    for (i=a+1; i<=10000; i++)
     {
-        if(p(i))
+        if (pal(i)==1)
         {
-            p1=i;
+            diff1=i-a;
+            pal1=i;
             break;
         }
     }
-    for(i=n+1;;i++)
+    for (i=a-1; i>0; i--)
     {
-        if(p(i))
+        if (pal(i)==1)
         {
-            p2=i;
+            diff2=a-i;
+            pal2=i;
             break;
         }
     }
-    if(n-p1==p2-n)
+    if (diff1>diff2)
     {
-        printf("%d %d ",p1,p2);
+        printf("%d",pal2);
     }
-    else if(n-p1>p2-n)
+    else if (diff2==diff1)
     {
-        printf("%d",p2);
+        printf("%d %d",pal2,pal1);
     }
     else
     {
-        printf("%d",p1);
+        printf("%d",pal1);
     }
+    return 0;
 }
