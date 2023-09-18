@@ -1,32 +1,25 @@
 #include<stdio.h>
 int main()
 {
-    int n,m,p,l,o;
+    int n,i,j,d[100],k;
     scanf("%d",&n);
-    m=n%10;
-    n=n/10;
-    p=n%10;
-    n=n/10;
-    l=n%10;
-    n=n/10;
-    o=n%10;
-    n=n/10;
-    if(o==6)
+    i=0;
+    while(n>0)
     {
-        o=9;
+        d[i]=n%10;
+        n=n/10;
+        i++;
     }
-    else if(l==6)
+    for(j=i-1;j>=0;j--)
     {
-        l=9;
+        if(d[j]==6)
+        {
+            d[j]=9;
+            break;
+        }
     }
-    else if(p==6)
+    for(int k=i-1;k>=0;k--)
     {
-        p=9;
+        printf("%d",d[k]);
     }
-    else if(m==6)
-    {
-        m=9;
-    }
-    printf("%d%d%d%d",o,l,p,m);
-    
 }
