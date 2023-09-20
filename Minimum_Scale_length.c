@@ -1,35 +1,26 @@
 #include<stdio.h>
 int main()
 {
-    int n,scales[10],i,j,found=0,min=9999;
+    int n,arr[100],c=0,i,j,max=0;
     scanf("%d",&n);
     for(i=0;i<n;i++)
     {
-        scanf("%d",&scales[i]);
+        scanf("%d",&arr[i]);
     }
-    for(i=0;i<n;i++)
+    for(i=1;i<100;i++)
     {
-        if(min>scales[i])
-        {
-            min=scales[i];
-        }
-    }
-    for(i=min;i>=1;i--)
-    { 
-        found=0;
+        c=0;
         for(j=0;j<n;j++)
         {
-            if(scales[j]%i!=0)
+            if(arr[j]%i==0)
             {
-                found=1;
-                break;
+                c++;
             }
         }
-        if(found==0)
+        if(c==n)
         {
-            printf("%d",i);
-            break;
+            max=i;
         }
     }
-    return 0;
+    printf("%d",max);
 }
